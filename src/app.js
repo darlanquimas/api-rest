@@ -1,15 +1,19 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 
 const app = express();
 const router = express.Router();
 
-const route = router.get("/", (req, res, next) => {
-  res.status(200).send({
-    title: "Node api Rest",
-    version: "0.0.1",
-  });
-});
+//carregamento de rotas
+const routes = require("./routes/router");
 
-app.use("/", route);
+app.use(bodyParser.json());
+app.use(
+  bodyParser.urlencoded({
+    extended: false,
+  })
+);
+
+app.use("/", routes);
 
 module.exports = app;
