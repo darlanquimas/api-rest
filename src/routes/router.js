@@ -13,7 +13,10 @@ router.get("/", (req, res, next) => {
 });
 
 //produtos
-router.get("/products", productController.post);
+router.get("/products", productController.get);
+router.get("/products/id/:id", productController.getById);
+router.get("/products/slug/:slug", productController.getBySlug);
+router.get("/products/tag/:tag", productController.getByTag);
 router.post("/products", productController.post);
 router.put("/products/:id", productController.put);
 router.delete("/products", productController.delete);
