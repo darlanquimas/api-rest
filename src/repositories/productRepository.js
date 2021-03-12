@@ -2,8 +2,9 @@ const mongoose = require("mongoose");
 const Product = mongoose.model("Product");
 
 //listar todos os ativos
-exports.get = () => {
-  return Product.find({ active: true }, "title price slug");
+exports.get = async () => {
+  const res = await Product.find({ active: true }, "title price slug");
+  return res;
 };
 
 exports.getBySlug = (slug) => {
